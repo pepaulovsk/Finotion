@@ -6,7 +6,9 @@ protocol iCloudKVStoreServiceProtocol: Sendable {
     func clear()
 }
 
-final class iCloudKVStoreService: iCloudKVStoreServiceProtocol, Sendable {
+// @unchecked Sendable because NSUbiquitousKeyValueStore is thread-safe in practice
+// but does not formally conform to Sendable.
+final class iCloudKVStoreService: iCloudKVStoreServiceProtocol, @unchecked Sendable {
 
     private let store = NSUbiquitousKeyValueStore.default
     private let key = "fieldMapping"
