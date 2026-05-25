@@ -1,0 +1,18 @@
+# Normalize line endings: store LF in git, checkout native on each platform
+* text=auto
+
+# Swift and Apple config files: always LF
+*.swift text eol=lf
+*.plist text eol=lf
+*.entitlements text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.json text eol=lf
+
+# Binary files: no line-ending conversion
+*.png binary
+*.jpg binary
+*.xcassets binary
+*.zip binary
