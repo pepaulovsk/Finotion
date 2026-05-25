@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: Expense Entry Form and URL Scheme Handler
 type: frontend
 complexity: high
@@ -36,13 +36,13 @@ Implements the primary expense capture flow: a bottom-sheet form for manual entr
 </requirements>
 
 ## Subtasks
-- [ ] 7.1 Create `Features/ExpenseEntry/ExpenseEntryView.swift` as a bottom sheet with all form fields, a save button, and a loading/success animation.
-- [ ] 7.2 Create `Features/ExpenseEntry/ExpenseEntryViewModel.swift` with form state, `ExpenseEntryIntent` pre-fill, validation, and save action.
-- [ ] 7.3 Create `Core/URLSchemeHandler.swift` that parses `finotion://add` parameters into `ExpenseEntryIntent` with graceful handling of missing/malformed values.
-- [ ] 7.4 Create `Services/Alias/MerchantAliasService.swift` with `resolve(rawName:)` lookup (case-insensitive match against `MerchantAlias.rawName`) and `register(rawName:)` upsert.
-- [ ] 7.5 Wire `.onOpenURL` in `FinotionApp.swift` / `MainTabView` to parse the URL and present the expense entry sheet pre-filled with the intent.
-- [ ] 7.6 Implement the category searchable picker backed by `CategoryService`; include inline new-category creation flow.
-- [ ] 7.7 Write unit tests for `ExpenseEntryViewModel`, `URLSchemeHandler`, and `MerchantAliasService`.
+- [x] 7.1 Create `Features/ExpenseEntry/ExpenseEntryView.swift` as a bottom sheet with all form fields, a save button, and a loading/success animation.
+- [x] 7.2 Create `Features/ExpenseEntry/ExpenseEntryViewModel.swift` with form state, `ExpenseEntryIntent` pre-fill, validation, and save action.
+- [x] 7.3 Create `Core/URLSchemeHandler.swift` that parses `finotion://add` parameters into `ExpenseEntryIntent` with graceful handling of missing/malformed values.
+- [x] 7.4 Create `Services/Alias/MerchantAliasService.swift` with `resolve(rawName:)` lookup (case-insensitive match against `MerchantAlias.rawName`) and `register(rawName:)` upsert.
+- [x] 7.5 Wire `.onOpenURL` in `FinotionApp.swift` / `MainTabView` to parse the URL and present the expense entry sheet pre-filled with the intent.
+- [x] 7.6 Implement the category searchable picker backed by `CategoryService`; include inline new-category creation flow.
+- [x] 7.7 Write unit tests for `ExpenseEntryViewModel`, `URLSchemeHandler`, and `MerchantAliasService`.
 
 ## Implementation Details
 See TechSpec "Integration Points — Apple Shortcuts / NFC" for the URL scheme structure and the NFC flow walkthrough. See TechSpec "Technical Considerations — NFC Flow Detail" for the exact sequence of service calls on save.

@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: Dashboard
 type: frontend
 complexity: high
@@ -37,12 +37,12 @@ Implements the main dashboard screen: current-month spending summary, per-catego
 </requirements>
 
 ## Subtasks
-- [ ] 11.1 Create `Features/Dashboard/DashboardView.swift` with sections for monthly total, category breakdown, recent transactions, recurring status, and trend chart; include pull-to-refresh and skeleton state.
-- [ ] 11.2 Create `Features/Dashboard/DashboardViewModel.swift` with parallel fetch logic, section state, and `BudgetGoal` auto-carry trigger.
-- [ ] 11.3 Implement the category totals section with visual progress indicators, `BudgetGoal` limit display, and tap-to-edit-goal action.
-- [ ] 11.4 Implement the spending trend chart using Swift Charts for the last 6 months.
-- [ ] 11.5 Create `Features/Dashboard/SetBudgetGoalView.swift` — sheet for creating or updating a `BudgetGoal` for a specific category and month.
-- [ ] 11.6 Write unit tests for `DashboardViewModel` data aggregation, auto-carry trigger, and section state transitions.
+- [x] 11.1 Create `Features/Dashboard/DashboardView.swift` with sections for monthly total, category breakdown, recent transactions, recurring status, and trend chart; include pull-to-refresh and skeleton state.
+- [x] 11.2 Create `Features/Dashboard/DashboardViewModel.swift` with parallel fetch logic, section state, and `BudgetGoal` auto-carry trigger.
+- [x] 11.3 Implement the category totals section with visual progress indicators, `BudgetGoal` limit display, and tap-to-edit-goal action.
+- [x] 11.4 Implement the spending trend chart using Swift Charts for the last 6 months.
+- [x] 11.5 Create `Features/Dashboard/SetBudgetGoalView.swift` — sheet for creating or updating a `BudgetGoal` for a specific category and month.
+- [x] 11.6 Write unit tests for `DashboardViewModel` data aggregation, auto-carry trigger, and section state transitions.
 
 ## Implementation Details
 See TechSpec "Technical Considerations — Dashboard Data Strategy" for the fetch strategy, skeleton timing, and cache rules. See TechSpec "Data Models — SwiftData Models" for `BudgetGoal` fields and auto-carry behavior.

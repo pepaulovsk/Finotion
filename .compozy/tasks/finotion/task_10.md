@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: Merchant Alias Management and Settings Screen
 type: frontend
 complexity: medium
@@ -33,13 +33,13 @@ Implements the merchant alias management screen (where users assign friendly nam
 </requirements>
 
 ## Subtasks
-- [ ] 10.1 Create `Features/Aliases/MerchantAliasListView.swift` with two-section list (Unnamed / Named) and tap-to-edit navigation.
-- [ ] 10.2 Create `Features/Aliases/MerchantAliasViewModel.swift` with `@Observable` CRUD backed by SwiftData `MerchantAlias` model.
-- [ ] 10.3 Create `Features/Aliases/EditAliasView.swift` — simple sheet with a `TextField` for alias input and a "Clear" button.
-- [ ] 10.4 Create `Features/Settings/SettingsView.swift` as a `Form` with field mapping summary, iCloud status, sign-out, and version rows.
-- [ ] 10.5 Implement `AppState.signOut()` in `Core/AppState.swift` (if not already done in task_05), or add the method there.
-- [ ] 10.6 Wire the "Edit Field Mapping" action to re-present `FieldMappingView` from task_06, pre-populated with the current mapping; wire the save action to update `AppState.fieldMapping` and persist via `iCloudKVStoreService`.
-- [ ] 10.7 Write unit tests for `MerchantAliasViewModel` and `AppState.signOut()`.
+- [x] 10.1 Create `Features/Aliases/MerchantAliasListView.swift` with two-section list (Unnamed / Named) and tap-to-edit navigation.
+- [x] 10.2 Create `Features/Aliases/MerchantAliasViewModel.swift` with `@Observable` CRUD backed by SwiftData `MerchantAlias` model.
+- [x] 10.3 Create `Features/Aliases/EditAliasView.swift` — simple sheet with a `TextField` for alias input and a "Clear" button.
+- [x] 10.4 Create `Features/Settings/SettingsView.swift` as a `Form` with field mapping summary, iCloud status, sign-out, and version rows.
+- [x] 10.5 Implement `AppState.signOut()` in `Core/AppState.swift`.
+- [x] 10.6 Wire the "Edit Field Mapping" action via `EditFieldMappingView`; save updates `AppState.fieldMapping` and persists via `iCloudKVStoreService`.
+- [x] 10.7 Write unit tests for `MerchantAliasViewModel` and `AppState.signOut()`.
 
 ## Implementation Details
 See TechSpec "Component Overview — Services" for `MerchantAliasService` role. Note that `MerchantAliasService.resolve(rawName:)` (task_07) and `MerchantAliasViewModel` (this task) both interact with the same `MerchantAlias` SwiftData model — `MerchantAliasService` handles runtime resolution during expense entry; `MerchantAliasViewModel` handles user-facing management.

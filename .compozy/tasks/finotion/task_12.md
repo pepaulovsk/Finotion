@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: LiveNotionService URLSession Implementation
 type: backend
 complexity: high
@@ -35,13 +35,13 @@ Implements the production `NotionService` that makes real HTTP calls to the Noti
 </requirements>
 
 ## Subtasks
-- [ ] 12.1 Create `Services/Notion/Live/LiveNotionService.swift` as the production `NotionService` implementation.
-- [ ] 12.2 Implement the serial request queue (actor or `AsyncStream`-based) enforcing 350 ms minimum request spacing.
-- [ ] 12.3 Implement `Codable` request/response types for all Notion endpoints: `/v1/search`, `/v1/databases`, `/v1/databases/{id}`, `PATCH /v1/databases/{id}`, `/v1/databases/{id}/query`, `/v1/pages`, `/v1/users/me`.
-- [ ] 12.4 Implement error mapping, rate-limit retry, and OSLog logging.
-- [ ] 12.5 Wire `LiveNotionService` into `FinotionApp.swift` at the DI root for production builds; inject `MockNotionService` for `DEBUG` or preview builds.
-- [ ] 12.6 Write unit tests for error mapping, rate-limit retry, and request header injection using a mock `URLSession`.
-- [ ] 12.7 Write integration tests against the real Notion API using a sandbox integration token.
+- [x] 12.1 Create `Services/Notion/Live/LiveNotionService.swift` as the production `NotionService` implementation.
+- [x] 12.2 Implement the serial request queue (actor or `AsyncStream`-based) enforcing 350 ms minimum request spacing.
+- [x] 12.3 Implement `Codable` request/response types for all Notion endpoints: `/v1/search`, `/v1/databases`, `/v1/databases/{id}`, `PATCH /v1/databases/{id}`, `/v1/databases/{id}/query`, `/v1/pages`, `/v1/users/me`.
+- [x] 12.4 Implement error mapping, rate-limit retry, and OSLog logging.
+- [x] 12.5 Wire `LiveNotionService` into `FinotionApp.swift` at the DI root for production builds; inject `MockNotionService` for `DEBUG` or preview builds.
+- [x] 12.6 Write unit tests for error mapping, rate-limit retry, and request header injection using a mock `URLSession`.
+- [x] 12.7 Write integration tests against the real Notion API using a sandbox integration token.
 
 ## Implementation Details
 See TechSpec "Notion API Endpoints Consumed" for all endpoint URLs and their purpose. See TechSpec "Integration Points — Notion API" for the rate limiting, retry strategy, and auth pattern.

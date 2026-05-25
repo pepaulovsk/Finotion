@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.3.app/Contents/Developer
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Install SwiftLint
+        run: brew install swiftlint
+
+      - name: Build and test
+        run: |
+          xcodebuild test \
+            -scheme Finotion \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+            -enableCodeCoverage YES \
+            | xcpretty --color
+
+      - name: Check coverage
+        run: |
+          xcrun xccov view --report --json \
+            $(find ~/Library/Developer/Xcode/DerivedData -name '*.xcresult' | tail -1) \
+            | python3 -c "
+          import sys, json
+          data = json.load(sys.stdin)
+          targets = data.get('targets', [])
+          target = next((t for t in targets if t['name'] == 'Finotion.app'), None)
+          if target:
+              cov = target['lineCoverage'] * 100
+              print(f'Coverage: {cov:.1f}%')
+              sys.exit(0 if cov >= 80 else 1)
+          else:
+              print('Coverage target not found')
+              sys.exit(1)
+          "

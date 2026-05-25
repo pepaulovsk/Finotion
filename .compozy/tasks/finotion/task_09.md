@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: Recurring Payments Module
 type: frontend
 complexity: high
@@ -34,12 +34,12 @@ Implements the full recurring payments feature: a CRUD management screen, a `Rec
 </requirements>
 
 ## Subtasks
-- [ ] 9.1 Create `Features/RecurringPayments/RecurringPaymentsView.swift` with a list, add button, and swipe-to-delete; show the current-month dispatch status badge per row.
-- [ ] 9.2 Create `Features/RecurringPayments/RecurringPaymentsViewModel.swift` with `@Observable` CRUD backed by SwiftData and a `currentMonthStatus(for:)` helper.
-- [ ] 9.3 Create `Features/RecurringPayments/AddEditRecurringPaymentView.swift` — form for creating or editing a recurring payment (name, amount, dueDay 1–31, category, paymentMethod, isActive).
-- [ ] 9.4 Create `Services/Dispatch/RecurringDispatchService.swift` implementing the background dispatch loop, deduplication, last-month guard, due-day edge cases, and local notifications.
-- [ ] 9.5 Register `com.finotion.recurring-dispatch` in the app entry point and wire `BGTaskScheduler.shared.register` to `RecurringDispatchService.handleBackgroundTask`.
-- [ ] 9.6 Write unit tests for `RecurringDispatchService` dispatch logic, deduplication, value versioning, and due-day edge cases.
+- [x] 9.1 Create `Features/RecurringPayments/RecurringPaymentsView.swift` with a list, add button, and swipe-to-delete; show the current-month dispatch status badge per row.
+- [x] 9.2 Create `Features/RecurringPayments/RecurringPaymentsViewModel.swift` with `@Observable` CRUD backed by SwiftData and a `currentMonthStatus(for:)` helper.
+- [x] 9.3 Create `Features/RecurringPayments/AddEditRecurringPaymentView.swift` — form for creating or editing a recurring payment (name, amount, dueDay 1–31, category, paymentMethod, isActive).
+- [x] 9.4 Create `Services/Dispatch/RecurringDispatchService.swift` implementing the background dispatch loop, deduplication, last-month guard, due-day edge cases, and local notifications.
+- [x] 9.5 Register `com.finotion.recurring-dispatch` in the app entry point and wire `BGTaskScheduler.shared.register` to `RecurringDispatchService.handleBackgroundTask`.
+- [x] 9.6 Write unit tests for `RecurringDispatchService` dispatch logic, deduplication, value versioning, and due-day edge cases.
 
 ## Implementation Details
 See TechSpec "Integration Points — BackgroundTasks" for the exact dispatch loop steps and rescheduling pattern. See TechSpec "Technical Considerations — Recurring Payment Value Versioning" for the amount-change behavior.

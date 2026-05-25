@@ -18,6 +18,7 @@ final class MockNotionService: NotionService, @unchecked Sendable {
     var queryTransactionsError: NotionError?
     var createTransactionError: NotionError?
     var addCategoryOptionError: NotionError?
+    private(set) var queryTransactionsCallCount = 0
 
     // MARK: - Init
 
@@ -53,12 +54,15 @@ final class MockNotionService: NotionService, @unchecked Sendable {
     }
 
     func queryTransactions(databaseId: String, filter: NotionFilter?) async throws -> [Transaction] {
+        queryTransactionsCallCount += 1
         if let error = queryTransactionsError { throw error }
         var results = transactionsByDatabase[databaseId] ?? []
         if let filter {
             if let start = filter.startDate { results = results.filter { $0.date >= start } }
             if let end = filter.endDate { results = results.filter { $0.date <= end } }
             if let cat = filter.category { results = results.filter { $0.category == cat } }
+            if let pid = filter.pendingId { results = results.filter { $0.description?.contains(pid) == true } }
+            if let key = filter.recurringKey { results = results.filter { $0.description?.contains(key) == true } }
         }
         return results.sorted { $0.date > $1.date }
     }

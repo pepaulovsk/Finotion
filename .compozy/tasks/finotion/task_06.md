@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: Onboarding Flow
 type: frontend
 complexity: high
@@ -34,13 +34,13 @@ Implements the guided onboarding experience that connects Finotion to the user's
 </requirements>
 
 ## Subtasks
-- [ ] 6.1 Create `Features/Onboarding/OnboardingView.swift` as a paged flow (using `TabView` with `.page` style or a custom step controller).
-- [ ] 6.2 Implement `Features/Onboarding/OnboardingViewModel.swift` handling OAuth, database fetching, template creation, and step progression logic.
-- [ ] 6.3 Implement the OAuth step: `ASWebAuthenticationSession` → code exchange → `KeychainService.save(token:)`.
-- [ ] 6.4 Implement the database path selection step with Path A (template) and Path B (existing database list + field mapping screen).
-- [ ] 6.5 Implement the field mapping screen (`FieldMappingView`) for Path B: show available Notion properties, let user assign each concept, validate that `nameField`, `amountField`, and `dateField` are assigned before allowing proceed.
-- [ ] 6.6 Implement Shortcut install step (deep link) and notification permission step; both skippable.
-- [ ] 6.7 Write unit tests for `OnboardingViewModel` state transitions and error handling.
+- [x] 6.1 Create `Features/Onboarding/OnboardingView.swift` as a paged flow (using `TabView` with `.page` style or a custom step controller).
+- [x] 6.2 Implement `Features/Onboarding/OnboardingViewModel.swift` handling OAuth, database fetching, template creation, and step progression logic.
+- [x] 6.3 Implement the OAuth step: `ASWebAuthenticationSession` → code exchange → `KeychainService.save(token:)`.
+- [x] 6.4 Implement the database path selection step with Path A (template) and Path B (existing database list + field mapping screen).
+- [x] 6.5 Implement the field mapping screen (`FieldMappingView`) for Path B: show available Notion properties, let user assign each concept, validate that `nameField`, `amountField`, and `dateField` are assigned before allowing proceed.
+- [x] 6.6 Implement Shortcut install step (deep link) and notification permission step; both skippable.
+- [x] 6.7 Write unit tests for `OnboardingViewModel` state transitions and error handling.
 
 ## Implementation Details
 See PRD "Core Features — Onboarding" and TechSpec "Integration Points — Notion API" for the OAuth flow and database path details. See TechSpec "Data Models — Configuration" for the keys used in `iCloudKVStoreService`.

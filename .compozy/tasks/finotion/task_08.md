@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: SyncService and Offline Write Queue
 type: backend
 complexity: high
@@ -35,11 +35,11 @@ Implements the offline resilience layer that ensures no transaction is lost when
 </requirements>
 
 ## Subtasks
-- [ ] 8.1 Create `Services/Sync/SyncServiceProtocol.swift` and `Services/Sync/SyncService.swift` with `enqueue`, `flush`, `pendingCount`, and `NWPathMonitor` wiring.
-- [ ] 8.2 Implement the flush loop: fetch pending entries, apply back-off window check, decode `transactionData`, call `NotionService.createTransaction`, handle success/failure/rate-limit.
-- [ ] 8.3 Implement idempotency deduplication: before `createTransaction`, call `NotionService.queryTransactions` with a Description filter for the `Transaction.id` string; if found, mark synced without posting.
-- [ ] 8.4 Create `Services/Sync/MockSyncService.swift` for use in `ExpenseEntryViewModel` tests (task_07).
-- [ ] 8.5 Write unit tests for `SyncService` back-off, retry, idempotency, and rate-limit handling.
+- [x] 8.1 Create `Services/Sync/SyncServiceProtocol.swift` and `Services/Sync/SyncService.swift` with `enqueue`, `flush`, `pendingCount`, and `NWPathMonitor` wiring.
+- [x] 8.2 Implement the flush loop: fetch pending entries, apply back-off window check, decode `transactionData`, call `NotionService.createTransaction`, handle success/failure/rate-limit.
+- [x] 8.3 Implement idempotency deduplication: before `createTransaction`, call `NotionService.queryTransactions` with a Description filter for the `Transaction.id` string; if found, mark synced without posting.
+- [x] 8.4 Create `Services/Sync/MockSyncService.swift` for use in `ExpenseEntryViewModel` tests (task_07).
+- [x] 8.5 Write unit tests for `SyncService` back-off, retry, idempotency, and rate-limit handling.
 
 ## Implementation Details
 See TechSpec "Integration Points — Notion API" for the retry strategy and TechSpec "Data Models — SwiftData Models" for the `PendingEntry` fields.

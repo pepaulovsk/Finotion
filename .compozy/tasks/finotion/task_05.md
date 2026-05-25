@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: AppState, Dependency Injection Root and CategoryService
 type: frontend
 complexity: medium
@@ -34,12 +34,12 @@ Wires together the app's root-level state, service dependencies, and navigation 
 </requirements>
 
 ## Subtasks
-- [ ] 5.1 Create `Core/AppState.swift` with `AuthStatus`, `SyncStatus` enums and the `@Observable AppState` class.
-- [ ] 5.2 Create `Core/FeatureAccess.swift` with the `FeatureAccess` protocol and `FullAccess` struct.
-- [ ] 5.3 Update `FinotionApp.swift` to instantiate all services, insert the `ModelContainer` into the environment, and set up the root `NavigationStack` that switches between onboarding and main tab views based on `AppState.authStatus`.
-- [ ] 5.4 Register the `NSUbiquitousKeyValueStore` change notification and `scenePhase` observer for `synchronize()` calls.
-- [ ] 5.5 Create `Services/Category/CategoryService.swift` with in-memory cache, fetch, add, and invalidate methods.
-- [ ] 5.6 Write unit tests for `AppState` launch state resolution and `CategoryService` cache behavior.
+- [x] 5.1 Create `Core/AppState.swift` with `AuthStatus`, `SyncStatus` enums and the `@Observable AppState` class.
+- [x] 5.2 Create `Core/FeatureAccess.swift` with the `FeatureAccess` protocol and `FullAccess` struct.
+- [x] 5.3 Update `FinotionApp.swift` to instantiate all services, insert the `ModelContainer` into the environment, and set up the root `NavigationStack` that switches between onboarding and main tab views based on `AppState.authStatus`.
+- [x] 5.4 Register the `NSUbiquitousKeyValueStore` change notification and `scenePhase` observer for `synchronize()` calls.
+- [x] 5.5 Create `Services/Category/CategoryService.swift` with in-memory cache, fetch, add, and invalidate methods.
+- [x] 5.6 Write unit tests for `AppState` launch state resolution and `CategoryService` cache behavior.
 
 ## Implementation Details
 See TechSpec "System Architecture — AppState" and "Technical Considerations — Category Sync" sections.

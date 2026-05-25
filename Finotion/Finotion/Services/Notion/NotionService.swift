@@ -57,6 +57,8 @@ struct NotionFilter: Codable, Sendable {
     var startDate: Date?
     var endDate: Date?
     var category: String?
+    var pendingId: String?
+    var recurringKey: String?
 }
 
 // MARK: - Error

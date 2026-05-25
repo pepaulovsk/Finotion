@@ -3,7 +3,11 @@
 ## Current State
 
 - Task 01 (Xcode Project Scaffold): **completed**
-- All other tasks: pending
+- Task 02 (NotionService Protocol + Mock): **completed**
+- Task 03 (SwiftData Schema + CloudKit): **completed**
+- Task 04 (KeychainService + iCloud Config): **completed**
+- Task 05 (AppState + DI Root + CategoryService): **completed**
+- Tasks 06–12: pending
 
 ## Shared Decisions
 
@@ -21,6 +25,13 @@
 - Keychain entitlement uses `$(AppIdentifierPrefix)` which expands to the Team ID at build time — no hardcoded Team ID needed.
 - iCloud KV Store entitlement uses `$(TeamIdentifierPrefix)` prefix pattern.
 - Background modes (`fetch`, `remote-notification`) belong in `UIBackgroundModes` in Info.plist, NOT in the entitlements file.
+
+## Development Environment
+
+- **Plataforma de desenvolvimento**: Windows 11 — sem acesso a Mac.
+- **Estratégia de build/test**: GitHub Actions `macos-15` runner. A cada `git push origin main`, o CI roda `xcodegen generate` + `xcodebuild test` automaticamente. Resultados visíveis em `github.com/<usuario>/finotion/actions`.
+- **Fluxo**: escreve código aqui no Windows → `git push` → GitHub Actions valida no macOS → verde ou vermelho no PR.
+- **Git repo inicializado**: `C:\...\Syncspend` (branch `main`). Precisa de `git remote add origin <url>` e `git push -u origin main` para ligar ao GitHub.
 
 ## Open Risks
 
