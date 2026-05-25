@@ -5,7 +5,7 @@
 | # | Title | Status | Complexity | Dependencies |
 |---|-------|--------|------------|--------------|
 | 01 | Xcode Project Scaffold | completed | medium | — |
-| 02 | NotionService Protocol, Domain Types and MockNotionService | pending | medium | task_01 |
+| 02 | NotionService Protocol, Domain Types and MockNotionService | completed | medium | task_01 |
 | 03 | SwiftData Schema and CloudKit Container | pending | medium | task_01 |
 | 04 | KeychainService and iCloud Configuration | pending | medium | task_01 |
 | 05 | AppState, Dependency Injection Root and CategoryService | pending | medium | task_02, task_03, task_04 |

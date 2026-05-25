@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: NotionService Protocol, Domain Types and MockNotionService
 type: backend
 complexity: medium
@@ -31,10 +31,10 @@ Defines the contract for all Notion API interactions through a `NotionService` p
 </requirements>
 
 ## Subtasks
-- [ ] 2.1 Create `Services/Notion/NotionService.swift` with the `NotionService` protocol and all domain types (`Transaction`, `NotionDatabase`, `NotionProperty`, `NotionFilter`, `NotionError`, `TransactionType`).
-- [ ] 2.2 Create `Services/Notion/MockNotionService.swift` implementing `NotionService` with in-memory state and per-method failure injection.
-- [ ] 2.3 Add a static `MockNotionService.preview` property pre-seeded with realistic sample transactions and databases for use in SwiftUI Previews.
-- [ ] 2.4 Write unit tests covering all mock method behaviors: happy path, failure injection, and empty-state edge cases.
+- [x] 2.1 Create `Services/Notion/NotionService.swift` with the `NotionService` protocol and all domain types (`Transaction`, `NotionDatabase`, `NotionProperty`, `NotionFilter`, `NotionError`, `TransactionType`).
+- [x] 2.2 Create `Services/Notion/MockNotionService.swift` implementing `NotionService` with in-memory state and per-method failure injection.
+- [x] 2.3 Add a static `MockNotionService.preview` property pre-seeded with realistic sample transactions and databases for use in SwiftUI Previews.
+- [x] 2.4 Write unit tests covering all mock method behaviors: happy path, failure injection, and empty-state edge cases.
 
 ## Implementation Details
 See TechSpec "Core Interfaces" section for the exact protocol signature and "Data Models — Transaction" for the `Transaction` struct fields.
