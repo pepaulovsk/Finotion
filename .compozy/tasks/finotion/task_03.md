@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: SwiftData Schema and CloudKit Container
 type: backend
 complexity: medium

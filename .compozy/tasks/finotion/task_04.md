@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 title: KeychainService and iCloud Configuration
 type: backend
 complexity: medium
