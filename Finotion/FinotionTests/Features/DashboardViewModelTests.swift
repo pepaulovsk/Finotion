@@ -80,10 +80,10 @@ final class DashboardViewModelTests: XCTestCase {
         await vm.load()
 
         XCTAssertEqual(vm.categoryTotals.count, 2)
-        let food = vm.categoryTotals.first(where: { $0.category == "Food" })
-        let transport = vm.categoryTotals.first(where: { $0.category == "Transport" })
-        XCTAssertEqual(food?.spent, 60, accuracy: 0.01)
-        XCTAssertEqual(transport?.spent, 55, accuracy: 0.01)
+        let food = try XCTUnwrap(vm.categoryTotals.first(where: { $0.category == "Food" }))
+        let transport = try XCTUnwrap(vm.categoryTotals.first(where: { $0.category == "Transport" }))
+        XCTAssertEqual(food.spent, 60, accuracy: 0.01)
+        XCTAssertEqual(transport.spent, 55, accuracy: 0.01)
     }
 
     func testBudgetGoalLimitAppearsInCategoryTotals() async throws {
@@ -97,8 +97,8 @@ final class DashboardViewModelTests: XCTestCase {
         let vm = makeViewModel()
         await vm.load()
 
-        let food = vm.categoryTotals.first(where: { $0.category == "Food" })
-        XCTAssertEqual(food?.limit, 500, accuracy: 0.01)
+        let food = try XCTUnwrap(vm.categoryTotals.first(where: { $0.category == "Food" }))
+        XCTAssertEqual(try XCTUnwrap(food.limit), 500, accuracy: 0.01)
     }
 
     // MARK: - BudgetGoal auto-carry
@@ -118,7 +118,7 @@ final class DashboardViewModelTests: XCTestCase {
         let goals = try context.fetch(FetchDescriptor<BudgetGoal>()).filter { $0.yearMonth == currentMonth }
         XCTAssertEqual(goals.count, 1)
         XCTAssertEqual(goals.first?.categoryName, "Food")
-        XCTAssertEqual(goals.first?.limitAmount, 500, accuracy: 0.01)
+        XCTAssertEqual(try XCTUnwrap(goals.first).limitAmount, 500, accuracy: 0.01)
     }
 
     func testAutoCarryNotCalledWhenGoalsAlreadyExist() async throws {
