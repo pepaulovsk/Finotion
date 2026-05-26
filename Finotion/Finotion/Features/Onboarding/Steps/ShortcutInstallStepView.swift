@@ -9,7 +9,7 @@ struct ShortcutInstallStepView: View {
             Spacer()
             Image(systemName: "apps.iphone")
                 .font(.system(size: 64))
-                .foregroundStyle(.accent)
+                .foregroundStyle(Color.accentColor)
             Text("Add to Shortcuts")
                 .font(.title.bold())
             Text("Install the Finotion shortcut to quickly log expenses with NFC stickers or from the Shortcuts app.")

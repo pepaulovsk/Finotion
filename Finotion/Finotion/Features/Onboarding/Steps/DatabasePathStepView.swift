@@ -64,7 +64,7 @@ struct DatabasePathStepView: View {
             HStack(spacing: 16) {
                 Image(systemName: systemImage)
                     .font(.title2)
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.accentColor)
                     .frame(width: 40)
                 VStack(alignment: .leading, spacing: 4) {
                     Text(title).font(.headline)

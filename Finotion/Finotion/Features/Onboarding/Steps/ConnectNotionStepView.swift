@@ -9,7 +9,7 @@ struct ConnectNotionStepView: View {
             Spacer()
             Image(systemName: "link.icloud")
                 .font(.system(size: 64))
-                .foregroundStyle(.accent)
+                .foregroundStyle(Color.accentColor)
             Text("Connect Notion")
                 .font(.title.bold())
             Text("Finotion needs access to your Notion workspace to store and read your financial data.")

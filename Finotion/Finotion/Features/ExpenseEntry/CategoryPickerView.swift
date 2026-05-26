@@ -37,7 +37,7 @@ struct CategoryPickerView: View {
                         Text(cat)
                         Spacer()
                         if selection == cat {
-                            Image(systemName: "checkmark").foregroundStyle(.accent)
+                            Image(systemName: "checkmark").foregroundStyle(Color.accentColor)
                         }
                     }
                 }

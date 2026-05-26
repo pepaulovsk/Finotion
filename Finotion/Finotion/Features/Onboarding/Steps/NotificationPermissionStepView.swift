@@ -8,7 +8,7 @@ struct NotificationPermissionStepView: View {
             Spacer()
             Image(systemName: "bell.badge")
                 .font(.system(size: 64))
-                .foregroundStyle(.accent)
+                .foregroundStyle(Color.accentColor)
             Text("Stay Informed")
                 .font(.title.bold())
             Text("Allow notifications to be reminded when recurring payments are dispatched and when syncs complete.")
