@@ -52,10 +52,8 @@ struct SetBudgetGoalView: View {
 
     private func save() {
         guard let limit = Double(limitText), limit > 0 else { return }
-        let descriptor = FetchDescriptor<BudgetGoal>(
-            predicate: #Predicate { $0.categoryName == category && $0.yearMonth == yearMonth }
-        )
-        if let existing = try? modelContext.fetch(descriptor).first {
+        let all = (try? modelContext.fetch(FetchDescriptor<BudgetGoal>())) ?? []
+        if let existing = all.first(where: { $0.categoryName == category && $0.yearMonth == yearMonth }) {
             existing.limitAmount = limit
         } else {
             modelContext.insert(BudgetGoal(categoryName: category, yearMonth: yearMonth, limitAmount: limit))

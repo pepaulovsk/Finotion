@@ -52,20 +52,14 @@ final class SyncService: SyncServiceProtocol, @unchecked Sendable {
 
     private func fetchPendingIDs() -> [UUID] {
         let context = ModelContext(container)
-        let descriptor = FetchDescriptor<PendingEntry>(
-            predicate: #Predicate { $0.status == "pending" },
-            sortBy: [SortDescriptor(\.createdAt)]
-        )
-        return (try? context.fetch(descriptor))?.map(\.id) ?? []
+        let descriptor = FetchDescriptor<PendingEntry>(sortBy: [SortDescriptor(\.createdAt)])
+        return (try? context.fetch(descriptor))?.filter { $0.status == "pending" }.map(\.id) ?? []
     }
 
     private func processEntry(id: UUID) async {
         let context = ModelContext(container)
-        let targetId = id
-        let descriptor = FetchDescriptor<PendingEntry>(
-            predicate: #Predicate { $0.id == targetId }
-        )
-        guard let entry = (try? context.fetch(descriptor))?.first else { return }
+        let all = (try? context.fetch(FetchDescriptor<PendingEntry>())) ?? []
+        guard let entry = all.first(where: { $0.id == id }) else { return }
 
         // Back-off window check
         if let last = entry.lastAttemptAt {
@@ -139,9 +133,7 @@ final class SyncService: SyncServiceProtocol, @unchecked Sendable {
 
     private func refreshPendingCount() async {
         let context = ModelContext(container)
-        let descriptor = FetchDescriptor<PendingEntry>(
-            predicate: #Predicate { $0.status == "pending" || $0.status == "failed" }
-        )
-        pendingCount = (try? context.fetch(descriptor))?.count ?? 0
+        let all = (try? context.fetch(FetchDescriptor<PendingEntry>())) ?? []
+        pendingCount = all.filter { $0.status == "pending" || $0.status == "failed" }.count
     }
 }

@@ -62,9 +62,7 @@ final class RecurringDispatchServiceTests: XCTestCase {
 
     private func fetchPayment(id: UUID) throws -> RecurringPayment? {
         let context = ModelContext(container)
-        var descriptor = FetchDescriptor<RecurringPayment>(predicate: #Predicate { $0.id == id })
-        descriptor.fetchLimit = 1
-        return try context.fetch(descriptor).first
+        return try context.fetch(FetchDescriptor<RecurringPayment>()).first(where: { $0.id == id })
     }
 
     // MARK: - Skip already dispatched
@@ -135,9 +133,7 @@ final class RecurringDispatchServiceTests: XCTestCase {
 
         // Simulate editing the amount — should not reset lastDispatchedMonth
         let context = ModelContext(container)
-        var descriptor = FetchDescriptor<RecurringPayment>(predicate: #Predicate { $0.id == payment.id })
-        descriptor.fetchLimit = 1
-        if let fetched = try? context.fetch(descriptor).first {
+        if let fetched = try? context.fetch(FetchDescriptor<RecurringPayment>()).first(where: { $0.id == payment.id }) {
             fetched.amount = 29.90
             try? context.save()
         }

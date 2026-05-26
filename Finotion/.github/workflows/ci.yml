@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+        run: sudo xcode-select -s /Applications/Xcode_26.3.app/Contents/Developer
 
       - name: Install XcodeGen
         run: brew install xcodegen
@@ -31,7 +31,7 @@ jobs:
           set -o pipefail
           xcodebuild test \
             -scheme Finotion \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=26.2' \
             -enableCodeCoverage YES \
             -resultBundlePath TestResults.xcresult \
             2>&1 | tee build.log | grep -E '^(Build|Test|error:|warning:|✓|✗|FAILED|PASSED)' || true

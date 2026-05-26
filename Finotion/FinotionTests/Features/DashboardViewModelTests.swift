@@ -115,8 +115,7 @@ final class DashboardViewModelTests: XCTestCase {
         await vm.load()
 
         let context = ModelContext(container)
-        let descriptor = FetchDescriptor<BudgetGoal>(predicate: #Predicate { $0.yearMonth == currentMonth })
-        let goals = try context.fetch(descriptor)
+        let goals = try context.fetch(FetchDescriptor<BudgetGoal>()).filter { $0.yearMonth == currentMonth }
         XCTAssertEqual(goals.count, 1)
         XCTAssertEqual(goals.first?.categoryName, "Food")
         XCTAssertEqual(goals.first?.limitAmount, 500, accuracy: 0.01)
@@ -130,8 +129,7 @@ final class DashboardViewModelTests: XCTestCase {
         await vm.load()
 
         let context = ModelContext(container)
-        let descriptor = FetchDescriptor<BudgetGoal>(predicate: #Predicate { $0.yearMonth == currentMonth })
-        let goals = try context.fetch(descriptor)
+        let goals = try context.fetch(FetchDescriptor<BudgetGoal>()).filter { $0.yearMonth == currentMonth }
         XCTAssertEqual(goals.count, 1)
     }
 

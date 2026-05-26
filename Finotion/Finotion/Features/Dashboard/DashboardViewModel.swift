@@ -121,8 +121,8 @@ final class DashboardViewModel {
 
     private func fetchGoals(yearMonth: String) -> [BudgetGoal] {
         let context = ModelContext(container)
-        let descriptor = FetchDescriptor<BudgetGoal>(predicate: #Predicate { $0.yearMonth == yearMonth })
-        return (try? context.fetch(descriptor)) ?? []
+        let all = (try? context.fetch(FetchDescriptor<BudgetGoal>())) ?? []
+        return all.filter { $0.yearMonth == yearMonth }
     }
 
     private func yearMonthString(from date: Date) -> String {

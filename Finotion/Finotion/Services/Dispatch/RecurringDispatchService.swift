@@ -104,9 +104,8 @@ final class RecurringDispatchService: @unchecked Sendable {
 
     private func fetchSnapshot(id: UUID) -> PaymentSnapshot? {
         let context = ModelContext(container)
-        var descriptor = FetchDescriptor<RecurringPayment>(predicate: #Predicate { $0.id == id })
-        descriptor.fetchLimit = 1
-        guard let payment = try? context.fetch(descriptor).first else { return nil }
+        let all = (try? context.fetch(FetchDescriptor<RecurringPayment>())) ?? []
+        guard let payment = all.first(where: { $0.id == id }) else { return nil }
         return PaymentSnapshot(
             id: payment.id,
             name: payment.name,
@@ -118,9 +117,8 @@ final class RecurringDispatchService: @unchecked Sendable {
 
     private func updateLastDispatched(id: UUID, yearMonth: String) {
         let context = ModelContext(container)
-        var descriptor = FetchDescriptor<RecurringPayment>(predicate: #Predicate { $0.id == id })
-        descriptor.fetchLimit = 1
-        guard let payment = try? context.fetch(descriptor).first else { return }
+        let all = (try? context.fetch(FetchDescriptor<RecurringPayment>())) ?? []
+        guard let payment = all.first(where: { $0.id == id }) else { return }
         payment.lastDispatchedMonth = yearMonth
         try? context.save()
     }

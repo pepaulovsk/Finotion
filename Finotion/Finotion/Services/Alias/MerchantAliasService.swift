@@ -22,11 +22,8 @@ final class MerchantAliasService: MerchantAliasServiceProtocol {
     }
 
     func register(rawName: String) async {
-        let name = rawName
-        let descriptor = FetchDescriptor<MerchantAlias>(
-            predicate: #Predicate<MerchantAlias> { $0.rawName == name }
-        )
-        if let existing = (try? context.fetch(descriptor))?.first {
+        let all = (try? context.fetch(FetchDescriptor<MerchantAlias>())) ?? []
+        if let existing = all.first(where: { $0.rawName == rawName }) {
             existing.seenAt = .now
         } else {
             context.insert(MerchantAlias(rawName: rawName, alias: nil, seenAt: .now))

@@ -122,9 +122,7 @@ final class SwiftDataTests: XCTestCase {
 
         try BudgetGoalService.autoCarry(from: "2026-04", to: "2026-05", context: context)
 
-        let results = try context.fetch(FetchDescriptor<BudgetGoal>(
-            predicate: #Predicate { $0.yearMonth == "2026-05" }
-        ))
+        let results = try context.fetch(FetchDescriptor<BudgetGoal>()).filter { $0.yearMonth == "2026-05" }
         XCTAssertEqual(results.count, 3)
         XCTAssertTrue(results.contains(where: { $0.categoryName == "Alimentação" && $0.limitAmount == 800 }))
         XCTAssertTrue(results.contains(where: { $0.categoryName == "Transporte" && $0.limitAmount == 300 }))
@@ -137,9 +135,7 @@ final class SwiftDataTests: XCTestCase {
 
         try BudgetGoalService.autoCarry(from: "2026-04", to: "2026-05", context: context)
 
-        let results = try context.fetch(FetchDescriptor<BudgetGoal>(
-            predicate: #Predicate { $0.yearMonth == "2026-05" }
-        ))
+        let results = try context.fetch(FetchDescriptor<BudgetGoal>()).filter { $0.yearMonth == "2026-05" }
         XCTAssertEqual(results.count, 1, "Existing goals must not be overwritten")
         XCTAssertEqual(results.first?.limitAmount, 1000)
     }

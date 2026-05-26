@@ -14,7 +14,7 @@ enum DataContainer {
         } else {
             config = ModelConfiguration(
                 schema: schema,
-                cloudKitContainerIdentifier: "iCloud.com.finotion.app"
+                cloudKitDatabase: .private("iCloud.com.finotion.app")
             )
         }
         return try ModelContainer(for: schema, configurations: [config])
